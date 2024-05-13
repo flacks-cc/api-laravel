@@ -1,0 +1,3959 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Barberia",
+        "description": "Servicio de API tipo SOA para implementación en una barberia",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/categoria/nuevo": {
+            "post": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Crear un nuevo registro de categoría",
+                "operationId": "5df04f502fd4591c90f8f7556f723676",
+                "requestBody": {
+                    "description": "Datos de la categoría para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "NombreCategoria": {
+                                        "description": "Nombre de la categoría, máximo 100 caracteres.",
+                                        "type": "string",
+                                        "maxLength": 100
+                                    },
+                                    "DescripcionCategoria": {
+                                        "description": "Descripción de la categoría, máximo 255 caracteres.",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el registro de categoría correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear el registro de categoría",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear el registro de categoría."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/categoria/idCategoria/editar": {
+            "put": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Actualizar un registro de categoría específico",
+                "operationId": "1cc755806020f6bda666e0ba4137c32f",
+                "parameters": [
+                    {
+                        "name": "idCategoria",
+                        "in": "path",
+                        "description": "ID de la categoría a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos de la categoría para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "NombreCategoria": {
+                                        "description": "Nombre de la categoría, máximo 100 caracteres.",
+                                        "type": "string",
+                                        "maxLength": 100
+                                    },
+                                    "DescripcionCategoria": {
+                                        "description": "Descripción de la categoría, máximo 255 caracteres.",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de categoría ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar el registro de categoría",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar el registro de categoría."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/categoria/index": {
+            "get": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Listado de registros de categoría",
+                "operationId": "410d2dfb0baa77500775f2a2ebfa77b0",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Categoria"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/categoria/idCategoria": {
+            "get": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Mostrar un registro de categoría específico",
+                "operationId": "1e4e759290288952844f9e1adb7dff73",
+                "parameters": [
+                    {
+                        "name": "idCategoria",
+                        "in": "path",
+                        "description": "ID de la categoría a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Categoria"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar el registro de categoría",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar el registro de categoría."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/categoria/idCategoria/eliminar": {
+            "delete": {
+                "tags": [
+                    "Categorias"
+                ],
+                "summary": "Eliminar un registro de categoría específico",
+                "operationId": "489dd35fce17ccb8a419ea45b51c5a90",
+                "parameters": [
+                    {
+                        "name": "idCategoria",
+                        "in": "path",
+                        "description": "ID de la categoría a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de categoría ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar el registro de categoría",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar el registro de categoría."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cliente/nuevo": {
+            "post": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Crear un nuevo registro",
+                "operationId": "e676182e321bd4b9397bd99347333d31",
+                "requestBody": {
+                    "description": "Datos del cliente para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cliente"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el registro correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cliente/idCliente/editar": {
+            "put": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Actualizar un registro específico",
+                "operationId": "d1fc561385d472847a610a1847f389d5",
+                "parameters": [
+                    {
+                        "name": "idCliente",
+                        "in": "path",
+                        "description": "ID del cliente a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del cliente para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cliente"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cliente/index": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Listado de registros",
+                "operationId": "5115493651b736786b00c0e2402520fb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "idCliente": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombreCliente": {
+                                                        "type": "string",
+                                                        "example": "Aderson Felix"
+                                                    },
+                                                    "correo": {
+                                                        "type": "string",
+                                                        "example": "JaraLazaro@gmail.com"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cliente/idCliente": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Mostrar un registro específico",
+                "operationId": "f77abad014c0ade86cdaa8b0f33cb164",
+                "parameters": [
+                    {
+                        "name": "idCliente",
+                        "in": "path",
+                        "description": "ID del cliente a buscar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cliente no encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Cliente no encontrado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cliente/idCliente/eliminar": {
+            "delete": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Eliminar un registro específico",
+                "operationId": "f8c850960cf7570bda45066ce4822c39",
+                "parameters": [
+                    {
+                        "name": "idCliente",
+                        "in": "path",
+                        "description": "ID del cliente a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detallegeneral/nuevo": {
+            "post": {
+                "tags": [
+                    "Detalle General"
+                ],
+                "summary": "Crear un nuevo detalle general",
+                "operationId": "8147393ca09771602b94fb55a149ee2d",
+                "requestBody": {
+                    "description": "Datos del detalle general para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdEmpleado": {
+                                        "description": "ID del empleado.",
+                                        "type": "integer"
+                                    },
+                                    "IdReservacion": {
+                                        "description": "ID de la reservación.",
+                                        "type": "integer"
+                                    },
+                                    "IdDetalleProducto": {
+                                        "description": "ID del detalle del producto.",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el detalle general correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear el detalle general",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear el detalle general."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detallegeneral/idDetalleGeneral/editar": {
+            "put": {
+                "tags": [
+                    "Detalle General"
+                ],
+                "summary": "Actualizar un detalle general específico",
+                "operationId": "987ec73c428e31a421873f1737545580",
+                "parameters": [
+                    {
+                        "name": "idDetalleGeneral",
+                        "in": "path",
+                        "description": "ID del detalle general a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del detalle general para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdEmpleado": {
+                                        "description": "ID del empleado.",
+                                        "type": "integer"
+                                    },
+                                    "IdReservacion": {
+                                        "description": "ID de la reservación.",
+                                        "type": "integer"
+                                    },
+                                    "IdDetalleProducto": {
+                                        "description": "ID del detalle del producto.",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El detalle general ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar el detalle general",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar el detalle general."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detallegeneral/index": {
+            "get": {
+                "tags": [
+                    "Detalle General"
+                ],
+                "summary": "Listado de detalles generales",
+                "operationId": "38c6fb6b8d47f58c86acc08dbc42c79e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "IdDetallesGeneral": {
+                                                        "type": "integer"
+                                                    },
+                                                    "IdEmpleado": {
+                                                        "type": "integer"
+                                                    },
+                                                    "IdReservacion": {
+                                                        "type": "integer"
+                                                    },
+                                                    "IdDetalleProducto": {
+                                                        "type": "integer"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detallegeneral/idDetalleGeneral": {
+            "get": {
+                "tags": [
+                    "Detalle General"
+                ],
+                "summary": "Mostrar un detalle general específico",
+                "operationId": "9547e410146717b2a5d210757fdff351",
+                "parameters": [
+                    {
+                        "name": "idDetalleGeneral",
+                        "in": "path",
+                        "description": "ID del detalle general a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "IdDetallesGeneral": {
+                                            "description": "ID del detalle general.",
+                                            "type": "integer"
+                                        },
+                                        "IdEmpleado": {
+                                            "description": "ID del empleado.",
+                                            "type": "integer"
+                                        },
+                                        "IdReservacion": {
+                                            "description": "ID de la reservación.",
+                                            "type": "integer"
+                                        },
+                                        "IdDetalleProducto": {
+                                            "description": "ID del detalle del producto.",
+                                            "type": "integer"
+                                        },
+                                        "created_at": {
+                                            "description": "Fecha de creación del detalle general.",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "description": "Fecha de última actualización del detalle general.",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "deleted_at": {
+                                            "description": "Fecha de eliminación del detalle general.",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar el detalle general",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar el detalle general."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detallegeneral/idDetalleGeneral/eliminar": {
+            "delete": {
+                "tags": [
+                    "Detalle General"
+                ],
+                "summary": "Eliminar un detalle general específico",
+                "operationId": "2a929e8c58e2a1cf29a6395f5b58be29",
+                "parameters": [
+                    {
+                        "name": "idDetalleGeneral",
+                        "in": "path",
+                        "description": "ID del detalle general a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El detalle general ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar el detalle general",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar el detalle general."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detalleproducto/nuevo": {
+            "post": {
+                "tags": [
+                    "DetalleProducto"
+                ],
+                "summary": "Crear un nuevo detalle de producto",
+                "operationId": "477db8c710ffa5881eeb79c147f7170d",
+                "requestBody": {
+                    "description": "Datos del detalle de producto para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdProducto": {
+                                        "description": "ID del producto",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "IdUsuario": {
+                                        "description": "ID del usuario",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "CantidadProductos": {
+                                        "description": "Cantidad de productos",
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "PrecioUnitario": {
+                                        "description": "Precio unitario del producto",
+                                        "type": "number",
+                                        "example": "10.99"
+                                    },
+                                    "MontoTotal": {
+                                        "description": "Monto total del detalle",
+                                        "type": "number",
+                                        "example": "54.95"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el detalle de producto correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear el detalle de producto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear el detalle de producto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detalleproducto/id/editar": {
+            "put": {
+                "tags": [
+                    "DetalleProducto"
+                ],
+                "summary": "Actualizar un detalle de producto específico",
+                "operationId": "ab6ad6ee03889d3e40fe7e1871977456",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del detalle de producto a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del detalle de producto para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdProducto": {
+                                        "description": "ID del producto",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "IdUsuario": {
+                                        "description": "ID del usuario",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "CantidadProductos": {
+                                        "description": "Cantidad de productos",
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "PrecioUnitario": {
+                                        "description": "Precio unitario del producto",
+                                        "type": "number",
+                                        "example": "10.99"
+                                    },
+                                    "MontoTotal": {
+                                        "description": "Monto total del detalle",
+                                        "type": "number",
+                                        "example": "54.95"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El detalle de producto ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar el detalle de producto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar el detalle de producto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detalleproducto/index": {
+            "get": {
+                "tags": [
+                    "DetalleProducto"
+                ],
+                "summary": "Listado de detalles de productos",
+                "operationId": "d17b7923946fdbf3a5e776d8e222afe6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "IdDetalleProducto": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "IdProducto": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "IdUsuario": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "CantidadProductos": {
+                                                        "type": "integer",
+                                                        "example": "5"
+                                                    },
+                                                    "PrecioUnitario": {
+                                                        "type": "number",
+                                                        "example": "10.99"
+                                                    },
+                                                    "MontoTotal": {
+                                                        "type": "number",
+                                                        "example": "54.95"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detalleproducto/id": {
+            "get": {
+                "tags": [
+                    "DetalleProducto"
+                ],
+                "summary": "Mostrar un detalle de producto específico",
+                "operationId": "9c5c0db7cfceb0959f9262db669e30b5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del detalle de producto a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "IdDetalleProducto": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "IdProducto": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "IdUsuario": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "CantidadProductos": {
+                                            "type": "integer",
+                                            "example": "5"
+                                        },
+                                        "PrecioUnitario": {
+                                            "type": "number",
+                                            "example": "10.99"
+                                        },
+                                        "MontoTotal": {
+                                            "type": "number",
+                                            "example": "54.95"
+                                        },
+                                        "created_at": {
+                                            "description": "Fecha de creación del detalle de producto",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "description": "Fecha de última actualización del detalle de producto",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar el detalle de producto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar el detalle de producto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/detalleproducto/id/eliminar": {
+            "delete": {
+                "tags": [
+                    "DetalleProducto"
+                ],
+                "summary": "Eliminar un detalle de producto específico",
+                "operationId": "21da91167bfc0002099f35b7e18d8f8d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del detalle de producto a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El detalle de producto ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar el detalle de producto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar el detalle de producto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/empleado/nuevo": {
+            "post": {
+                "tags": [
+                    "Empleados"
+                ],
+                "operationId": "742338ec618e76d4f35e79be2d49f8f2",
+                "requestBody": {
+                    "description": "Datos del empleado para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreEmpleado": {
+                                        "description": "Nombre del empleado",
+                                        "type": "string",
+                                        "example": "Juan Pérez"
+                                    },
+                                    "Salario": {
+                                        "description": "Salario del empleado",
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 55000
+                                    },
+                                    "IdUsuario": {
+                                        "description": "ID del usuario asociado al empleado",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el registro correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/empleado/idEmpleado/editar": {
+            "put": {
+                "tags": [
+                    "Empleados"
+                ],
+                "operationId": "2c251dc292a0381ccf26ba31a82b45f1",
+                "parameters": [
+                    {
+                        "name": "idEmpleado",
+                        "in": "path",
+                        "description": "ID del empleado a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del empleado para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreEmpleado": {
+                                        "description": "Nombre del empleado",
+                                        "type": "string",
+                                        "example": "Juan Pérez"
+                                    },
+                                    "Salario": {
+                                        "description": "Salario del empleado",
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 55000
+                                    },
+                                    "IdUsuario": {
+                                        "description": "ID del usuario asociado al empleado",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/empleado/index": {
+            "get": {
+                "tags": [
+                    "Empleados"
+                ],
+                "operationId": "201482ee13b9ec1262256a9960aaf46e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "idEmpleado": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "nombreEmpleado": {
+                                                        "type": "string",
+                                                        "example": "Juan Pérez"
+                                                    },
+                                                    "Salario": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 55000
+                                                    },
+                                                    "IdUsuario": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/empleado/idEmpleado": {
+            "get": {
+                "tags": [
+                    "Empleados"
+                ],
+                "operationId": "1c2899161007ca2068b36995d108370b",
+                "parameters": [
+                    {
+                        "name": "idEmpleado",
+                        "in": "path",
+                        "description": "ID del empleado a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "idEmpleado": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nombreEmpleado": {
+                                            "type": "string",
+                                            "example": "Juan Pérez"
+                                        },
+                                        "Salario": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 55000
+                                        },
+                                        "IdUsuario": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/empleado/idEmpleado/eliminar": {
+            "delete": {
+                "tags": [
+                    "Empleados"
+                ],
+                "operationId": "faa2daf0bc6fca1477317b08fb384c4f",
+                "parameters": [
+                    {
+                        "name": "idEmpleado",
+                        "in": "path",
+                        "description": "ID del empleado a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/producto/nuevo": {
+            "post": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Crear un nuevo producto",
+                "operationId": "95b6359a356065a4cc6b6745f6fd9429",
+                "requestBody": {
+                    "description": "Datos necesarios para crear un nuevo producto",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Producto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el registro de producto correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/producto/idProducto/editar": {
+            "put": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Actualizar un producto existente",
+                "operationId": "f522d32698fc013c03d7dd29ad300c12",
+                "parameters": [
+                    {
+                        "name": "idProducto",
+                        "in": "path",
+                        "description": "ID del producto a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos necesarios para actualizar un producto existente",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Producto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de producto ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/producto/index": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Listar todos los productos",
+                "operationId": "225dd4d2b73ca23a757df05dfec00e0c",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Listado de productos obtenido correctamente."
+                                        },
+                                        "productos": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Producto"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/producto/idProducto": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Mostrar un producto específico",
+                "operationId": "2dd5e0ff72238c9e9d40678e5dd35b60",
+                "parameters": [
+                    {
+                        "name": "idProducto",
+                        "in": "path",
+                        "description": "ID del producto a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Producto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontró el producto.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se encontró el producto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/producto/idProducto/eliminar": {
+            "delete": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Eliminar un producto específico",
+                "operationId": "ffe568841c649b0c0cd81713c91ba1c3",
+                "parameters": [
+                    {
+                        "name": "idProducto",
+                        "in": "path",
+                        "description": "ID del producto a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de producto ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontró el producto.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se encontró el producto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/producto/buscarCategoria": {
+            "post": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Buscar un producto por su categoría",
+                "operationId": "e167bf9bcc9876b09242dc78e11f6349",
+                "requestBody": {
+                    "description": "Nombre de la categoría para buscar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreCategoria": {
+                                        "description": "Nombre de la categoría",
+                                        "type": "string",
+                                        "example": "Pastel"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Categorías encontradas correctamente."
+                                        },
+                                        "categoria": {
+                                            "$ref": "#/components/schemas/Categoria"
+                                        },
+                                        "productos": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Producto"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontraron categorías con ese nombre",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se encontraron categorías con ese nombre."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Register a new user",
+                "description": "Create a new user in the system.",
+                "operationId": "7f656dd5309fd57f9f626a2d6f72bbbf",
+                "requestBody": {
+                    "description": "Data of the new user",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's name",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "User's phone number",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's email address",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string"
+                                    },
+                                    "idrol": {
+                                        "description": "ID of the user's role",
+                                        "type": "integer"
+                                    },
+                                    "firstname": {
+                                        "description": "User's first name",
+                                        "type": "string"
+                                    },
+                                    "firstlastname": {
+                                        "description": "User's first last name",
+                                        "type": "string"
+                                    },
+                                    "secondlastname": {
+                                        "description": "User's second last name",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "name": "John Doe",
+                                "phone": "1234567890",
+                                "email": "user@example.com",
+                                "password": "password",
+                                "idrol": 1,
+                                "firstname": "John",
+                                "firstlastname": "Doe",
+                                "secondlastname": "Smith"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "Access token",
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "description": "Data of the registered user",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "CONFLICT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/update/{id}": {
+            "put": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Update user information",
+                "description": "Update information of an existing user in the system.",
+                "operationId": "755672860806c14159cb00c2faaa2c56",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Updated data for the user",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's name",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "User's phone number",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's email address",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string"
+                                    },
+                                    "idrol": {
+                                        "description": "ID of the user's role",
+                                        "type": "integer"
+                                    },
+                                    "firstname": {
+                                        "description": "User's first name",
+                                        "type": "string"
+                                    },
+                                    "firstlastname": {
+                                        "description": "User's first last name",
+                                        "type": "string"
+                                    },
+                                    "secondlastname": {
+                                        "description": "User's second last name",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "name": "John Doe",
+                                "phone": "1234567890",
+                                "email": "user@example.com",
+                                "password": "newpassword",
+                                "idrol": 2,
+                                "firstname": "John",
+                                "firstlastname": "Doe",
+                                "secondlastname": "Smith"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "description": "Updated user data",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "User not found",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Invalid data for validation",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Login a user",
+                "description": "Authenticate a user and return an access token.",
+                "operationId": "cc28f9a6f2c44861335548ca2309d046",
+                "requestBody": {
+                    "description": "User login credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User's email address",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "ID of the logged-in user",
+                                            "type": "integer"
+                                        },
+                                        "token": {
+                                            "description": "Access token",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "User's name",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/show": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Obtener todos los usuarios",
+                "description": "Obtener todos los usuarios.",
+                "operationId": "607210e9ffe5d5897f541498cbfa7076",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "usuarios": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "id": 1,
+                                                    "NombreUsuario": "Usuario 1",
+                                                    "Correo": "usuario1@example.com"
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "NombreUsuario": "Usuario 2",
+                                                    "Correo": "usuario2@example.com"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservacion/nueva": {
+            "post": {
+                "tags": [
+                    "Reservaciones"
+                ],
+                "operationId": "bc82f4e968a91d145118a62944b26965",
+                "requestBody": {
+                    "description": "Datos de la reservación para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdUsuario": {
+                                        "description": "ID del usuario asociado a la reservación",
+                                        "type": "integer",
+                                        "example": 44
+                                    },
+                                    "IdServicio": {
+                                        "description": "ID del servicio",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "FechaReserva": {
+                                        "description": "Fecha de la reservación",
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2023-11-21 12:00:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado la reservación correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear la reservación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear la reservación."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/reservacion/idReservacion/editar": {
+            "put": {
+                "tags": [
+                    "Reservaciones"
+                ],
+                "summary": "Actualizar un registro de reservación específico",
+                "operationId": "80bda7907d995c2a5c6523045dd80230",
+                "parameters": [
+                    {
+                        "name": "idReservacion",
+                        "in": "path",
+                        "description": "ID de la reservación a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos de la reservación para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdUsuario": {
+                                        "description": "ID del usuario asociado a la reservación",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "FechaReserva": {
+                                        "description": "Fecha de la reservación",
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2023-11-21 15:30:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "La reservación ha sido actualizada correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar la reservación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar la reservación."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservacion/index": {
+            "get": {
+                "tags": [
+                    "Reservaciones"
+                ],
+                "operationId": "dd161a55fc54b1a2e464c1666ff77b49",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "IdReservacion": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "IdUsuario": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "FechaReserva": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-11-21 15:30:00"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-11-21T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-11-21T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservacion/idReservacion": {
+            "get": {
+                "tags": [
+                    "Reservaciones"
+                ],
+                "summary": "Mostrar una reservación específica",
+                "operationId": "77e4d1d5d09377c9a1b1eec9bb170395",
+                "parameters": [
+                    {
+                        "name": "idReservacion",
+                        "in": "path",
+                        "description": "ID de la reservación a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "IdReservacion": {
+                                            "type": "number",
+                                            "example": "1"
+                                        },
+                                        "IdUsuario": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "FechaReserva": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2023-11-21 15:30:00"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2023-11-21T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2023-11-21T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar la reservación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar la reservación."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reservacion/idReservacion/eliminar": {
+            "delete": {
+                "tags": [
+                    "Reservaciones"
+                ],
+                "summary": "Eliminar una reservación específica",
+                "operationId": "e71bcfc718681cb05583b4a6c959bf00",
+                "parameters": [
+                    {
+                        "name": "idReservacion",
+                        "in": "path",
+                        "description": "ID de la reservación a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "La reservación ha sido eliminada correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar la reservación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar la reservación."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rol/nuevo": {
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Crear un nuevo registro de rol",
+                "operationId": "cf70d952e82be1884a887d2d759b6cd5",
+                "requestBody": {
+                    "description": "Datos del rol para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreRol": {
+                                        "description": "Nombre del rol",
+                                        "type": "string",
+                                        "example": "Admin"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el registro de rol correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear el registro de rol",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear el registro de rol."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/rol/idRol/editar": {
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Actualizar un registro de rol específico",
+                "operationId": "588f0f585e5a2dcfc68563784e757b4c",
+                "parameters": [
+                    {
+                        "name": "idRol",
+                        "in": "path",
+                        "description": "ID del rol a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del rol para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreRol": {
+                                        "description": "Nombre del rol",
+                                        "type": "string",
+                                        "example": "Admin"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de rol ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar el registro de rol",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar el registro de rol."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rol/index": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Listado de registros de rol",
+                "operationId": "d675f33f29587b9cf8c07ee2f81052d6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "idRol": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombreRol": {
+                                                        "type": "string",
+                                                        "example": "Admin"
+                                                    },
+                                                    "created_at": {
+                                                        "description": "Fecha de creación del rol",
+                                                        "type": "string",
+                                                        "format": "date-time"
+                                                    },
+                                                    "updated_at": {
+                                                        "description": "Fecha de última actualización del rol",
+                                                        "type": "string",
+                                                        "format": "date-time"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rol/idRol": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Mostrar un registro de rol específico",
+                "operationId": "2b5dc8f765f28da1b9081147e3fb2a1a",
+                "parameters": [
+                    {
+                        "name": "idRol",
+                        "in": "path",
+                        "description": "ID del rol a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "idRol": {
+                                            "type": "number",
+                                            "example": "1"
+                                        },
+                                        "nombreRol": {
+                                            "type": "string",
+                                            "example": "Admin"
+                                        },
+                                        "created_at": {
+                                            "description": "Fecha de creación del rol",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updated_at": {
+                                            "description": "Fecha de última actualización del rol",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar el registro de rol",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar el registro de rol."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rol/idRol/eliminar": {
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Eliminar un registro de rol específico",
+                "operationId": "d12a7a3baac8c2e158aac2692acf28fc",
+                "parameters": [
+                    {
+                        "name": "idRol",
+                        "in": "path",
+                        "description": "ID del rol a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de rol ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar el registro de rol",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar el registro de rol."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/servicio/nuevo": {
+            "post": {
+                "tags": [
+                    "Servicios"
+                ],
+                "summary": "Crear un nuevo registro de servicio",
+                "operationId": "551f08ec67523eaebe121f742912f67b",
+                "requestBody": {
+                    "description": "Datos del servicio para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Precio": {
+                                        "description": "Precio del servicio.",
+                                        "type": "integer",
+                                        "example": 100
+                                    },
+                                    "NombreServicio": {
+                                        "description": "Nombre del servicio.",
+                                        "type": "string",
+                                        "example": "Corte"
+                                    },
+                                    "Duracion": {
+                                        "description": "Duración del servicio.",
+                                        "type": "string",
+                                        "format": "time",
+                                        "example": "01:00:00"
+                                    },
+                                    "Descripcion": {
+                                        "description": "Descripción del servicio.",
+                                        "type": "string",
+                                        "example": "Descripcion"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el registro de servicio correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear el registro de servicio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear el registro de servicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/servicio/idServicio/editar": {
+            "put": {
+                "tags": [
+                    "Servicios"
+                ],
+                "summary": "Actualizar un registro de servicio específico",
+                "operationId": "04d9f158087fea0efef967b751e77859",
+                "parameters": [
+                    {
+                        "name": "idServicio",
+                        "in": "path",
+                        "description": "ID del servicio a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del servicio para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Precio": {
+                                        "description": "Nuevo precio del servicio.",
+                                        "type": "integer"
+                                    },
+                                    "NombreServicio": {
+                                        "description": "Nuevo nombre del servicio.",
+                                        "type": "string"
+                                    },
+                                    "Duracion": {
+                                        "description": "Nueva duración del servicio.",
+                                        "type": "string",
+                                        "format": "time"
+                                    },
+                                    "Descripcion": {
+                                        "description": "Nueva descripción del servicio.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de servicio ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar el registro de servicio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar el registro de servicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/servicio/index": {
+            "get": {
+                "tags": [
+                    "Servicios"
+                ],
+                "summary": "Listado de registros de servicio",
+                "operationId": "8359eff31608336e95daa69ba12b01eb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "IdServicio": {
+                                                        "type": "integer"
+                                                    },
+                                                    "Precio": {
+                                                        "type": "integer"
+                                                    },
+                                                    "NombreServicio": {
+                                                        "type": "string"
+                                                    },
+                                                    "Duracion": {
+                                                        "type": "string"
+                                                    },
+                                                    "Descripcion": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/servicio/idServicio": {
+            "get": {
+                "tags": [
+                    "Servicios"
+                ],
+                "summary": "Mostrar un registro de servicio específico",
+                "operationId": "36c02559247fb37e827fb4028c825fd9",
+                "parameters": [
+                    {
+                        "name": "idServicio",
+                        "in": "path",
+                        "description": "ID del servicio a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Servicio"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar el registro de servicio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar el registro de servicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/servicio/idServicio/eliminar": {
+            "delete": {
+                "tags": [
+                    "Servicios"
+                ],
+                "summary": "Eliminar un registro de servicio específico",
+                "operationId": "516ad0fec4459ce86318fcb96fcbe3a1",
+                "parameters": [
+                    {
+                        "name": "idServicio",
+                        "in": "path",
+                        "description": "ID del servicio a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El registro de servicio ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar el registro de servicio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar el registro de servicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/nuevo": {
+            "post": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Crear un nuevo ticket",
+                "operationId": "c7cc94024ea5760acf1a37aa564f011d",
+                "requestBody": {
+                    "description": "Datos del ticket para crear",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdDetallesGeneral": {
+                                        "description": "ID del detalle general",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "fecha": {
+                                        "description": "Fecha del ticket",
+                                        "type": "string",
+                                        "example": "2023-02-23"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Se ha creado el ticket correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al crear el ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al crear el ticket."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/ticket/idTicket/editar": {
+            "put": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Actualizar un ticket específico",
+                "operationId": "a09c70c8d1af0b317495abb2189e2635",
+                "parameters": [
+                    {
+                        "name": "idTicket",
+                        "in": "path",
+                        "description": "ID del ticket a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos del ticket para actualizar",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "IdDetallesGeneral": {
+                                        "description": "ID del detalle general",
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "fecha": {
+                                        "description": "Fecha del ticket",
+                                        "type": "string",
+                                        "example": "2023-02-23"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El ticket ha sido actualizado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Los datos a validar no son correctos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Los datos a validar no son correctos."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar el ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al actualizar el ticket."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/index": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Listado de tickets",
+                "operationId": "ac850c9148e0d0664ae411932b28c58a",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Idticket": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "IdDetallesGeneral": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "fecha": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/idTicket": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Mostrar un ticket específico",
+                "operationId": "791ba3d6d83b2c9c9b8c14156e0f60b4",
+                "parameters": [
+                    {
+                        "name": "idTicket",
+                        "in": "path",
+                        "description": "ID del ticket a mostrar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Idticket": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "IdDetallesGeneral": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "fecha": {
+                                            "type": "string",
+                                            "example": "2023-02-23"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al mostrar el ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al mostrar el ticket."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ticket/idTicket/eliminar": {
+            "delete": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Eliminar un ticket específico",
+                "operationId": "971652fb9e363d4e2480b21ff8ef26ab",
+                "parameters": [
+                    {
+                        "name": "idTicket",
+                        "in": "path",
+                        "description": "ID del ticket a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "El ticket ha sido eliminado correctamente."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al eliminar el ticket",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Ha ocurrido un error al eliminar el ticket."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Categoria": {
+                "properties": {
+                    "idCategoria": {
+                        "description": "ID de la categoría",
+                        "type": "integer"
+                    },
+                    "nombreCategoria": {
+                        "description": "Nombre de la categoría",
+                        "type": "string"
+                    },
+                    "descripcionCategoria": {
+                        "description": "Descripción de la categoría",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación de la categoría",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización de la categoría",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de eliminación de la categoría",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Cliente": {
+                "properties": {
+                    "idCliente": {
+                        "description": "ID del cliente",
+                        "type": "integer"
+                    },
+                    "nombreCliente": {
+                        "description": "Nombre del cliente",
+                        "type": "string"
+                    },
+                    "correo": {
+                        "description": "Correo del cliente",
+                        "type": "string"
+                    },
+                    "idUsuario": {
+                        "description": "ID del usuario asociado al cliente",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación del cliente",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización del cliente",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de eliminación del cliente",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Producto": {
+                "properties": {
+                    "idProducto": {
+                        "description": "ID del producto",
+                        "type": "integer"
+                    },
+                    "nombreProducto": {
+                        "description": "Nombre del producto",
+                        "type": "string"
+                    },
+                    "precio": {
+                        "description": "Precio del producto",
+                        "type": "integer"
+                    },
+                    "descripcionProducto": {
+                        "description": "Descripción del producto",
+                        "type": "string"
+                    },
+                    "stock": {
+                        "description": "Cantidad en inventario",
+                        "type": "integer"
+                    },
+                    "idCategoria": {
+                        "description": "ID de la categoría del producto",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación del producto",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización del producto",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de eliminación del producto",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Reservacion": {
+                "properties": {
+                    "idReservacion": {
+                        "description": "ID de la reservación",
+                        "type": "integer"
+                    },
+                    "idUsuario": {
+                        "description": "ID del usuario asociado a la reservación",
+                        "type": "integer"
+                    },
+                    "fechaReserva": {
+                        "description": "Fecha de la reservación",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación de la reservación",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización de la reservación",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de eliminación de la reservación",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Rol": {
+                "properties": {
+                    "idRol": {
+                        "description": "ID del rol",
+                        "type": "integer"
+                    },
+                    "nombreRol": {
+                        "description": "Nombre del rol",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación del rol",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización del rol",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de eliminación del rol",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Servicio": {
+                "properties": {
+                    "idServicio": {
+                        "description": "ID del servicio",
+                        "type": "integer"
+                    },
+                    "precio": {
+                        "description": "Precio del servicio",
+                        "type": "integer"
+                    },
+                    "nombreServicio": {
+                        "description": "Nombre del servicio",
+                        "type": "string"
+                    },
+                    "duracion": {
+                        "description": "Duración del servicio",
+                        "type": "string",
+                        "format": "time"
+                    },
+                    "descripcion": {
+                        "description": "Descripción del servicio",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación del servicio",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización del servicio",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "deleted_at": {
+                        "description": "Fecha de eliminación del servicio",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
