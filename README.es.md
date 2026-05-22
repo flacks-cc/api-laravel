@@ -1,15 +1,20 @@
-<h1 align="center">⚙️ Flack's Cut & Connect — API REST Laravel</h1>
+# Flack's Cut & Connect — API REST Laravel
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Licencia-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3">
+</p>
 
 <p align="center">
   <em>API REST basada en Laravel para operaciones comerciales complementarias y reportes</em>
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white"><img src="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white" alt="Laravel"></a>
-  <a href="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white"><img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white" alt="PHP"></a>
-  <a href="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white" alt="MySQL"></a>
-  <a href="https://img.shields.io/badge/Licencia-GPL_v3-0298c3?logo=gnu&logoColor=white"><img src="https://img.shields.io/badge/Licencia-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3"></a>
-  <a href="https://img.shields.io/badge/Estado-Activo-2ea44f"><img src="https://img.shields.io/badge/Estado-Activo-2ea44f" alt="Activo"></a>
+  <a href="https://github.com/flacks-cc/api-laravel">Repositorio</a>
+  ·
+  <a href="https://github.com/flacks-cc/api-laravel/issues">Reportar error</a>
 </p>
 
 <p align="center">
@@ -18,7 +23,17 @@
 
 ---
 
-## 🚀 Inicio rápido
+## Acerca de Flack's Cut & Connect
+
+API REST construida con Laravel para operaciones comerciales complementarias, reportes y agregación de datos. Proporciona endpoints adicionales más allá de la API central de Spring Boot.
+
+## Funcionalidades
+
+- Reportes de negocio
+- Agregación de datos
+- Endpoints complementarios
+
+## Inicio rápido
 
 ### Requisitos previos
 
@@ -35,44 +50,35 @@ composer install
 php artisan serve
 ```
 
-## 🧩 Tecnologías
-
-| Capa | Tecnología |
-|------|-----------|
-| Framework | Laravel 10 |
-| Lenguaje | PHP 8.2 |
-| Base de datos | MySQL 8 |
-| Autenticación | JWT |
-
-## 📂 Estructura del proyecto
+## Arquitectura
 
 ```
-api-laravel/
-├── app/
-├── config/
-├── database/
-├── routes/
-├── resources/
-├── composer.json
-└── README.md
+(Pendiente)
 ```
 
-## 🤝 Contribuciones
+## Contribuciones
 
-Lee [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles.
+Lee [CONTRIBUTING.md](CONTRIBUTING.md) para conocer las convenciones de ramas, commits y PRs.
 
-## 📄 Licencia
+## Licencia
 
-GPL v3 — ver [LICENSE](LICENSE).
+Este proyecto está bajo la licencia GPL v3 — ver [LICENSE](LICENSE) para más detalles.
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 **Authors:**
 
-- [@chrisssp](https://github.com/chrisssp) — Desarrollador
+- Serrano Puertos Jorge Christian
+- Chávez Moreno José Eduardo
+- Fernández López Kevin Noé
+- Florentino Altamirano Misrael
+- Ortiz Pérez Alejandro
+- Moises Torres Bernabé
 
----
+**Advisors:**
 
-<p align="center">
-  <sub>Hecho con ❤️ por el equipo flacks-cc · 2026</sub>
-</p>
+- (TBD)
+
+**Apoyo académico:**
+
+- (TBD)

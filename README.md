@@ -1,15 +1,20 @@
-<h1 align="center">⚙️ Flack's Cut & Connect — Laravel REST API</h1>
+# Flack's Cut & Connect — Laravel REST API
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3">
+</p>
 
 <p align="center">
   <em>Laravel-based REST API for supplementary business operations and reporting</em>
 </p>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white"><img src="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white" alt="Laravel"></a>
-  <a href="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white"><img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white" alt="PHP"></a>
-  <a href="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white" alt="MySQL"></a>
-  <a href="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white"><img src="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3"></a>
-  <a href="https://img.shields.io/badge/Status-Active-2ea44f"><img src="https://img.shields.io/badge/Status-Active-2ea44f" alt="Active"></a>
+  <a href="https://github.com/flacks-cc/api-laravel">Repository</a>
+  ·
+  <a href="https://github.com/flacks-cc/api-laravel/issues">Report Bug</a>
 </p>
 
 <p align="center">
@@ -18,7 +23,17 @@
 
 ---
 
-## 🚀 Quick Start
+## About Flack's Cut & Connect
+
+REST API built with Laravel for supplementary business operations, reporting, and data aggregation. Provides additional endpoints beyond the core Spring Boot API.
+
+## Features
+
+- Business reporting
+- Data aggregation
+- Supplementary endpoints
+
+## Quick Start
 
 ### Prerequisites
 
@@ -26,7 +41,7 @@
 - Composer
 - MySQL 8+
 
-### Installation
+### Setup
 
 ```bash
 git clone https://github.com/flacks-cc/api-laravel.git
@@ -35,44 +50,35 @@ composer install
 php artisan serve
 ```
 
-## 🧩 Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | Laravel 10 |
-| Language | PHP 8.2 |
-| Database | MySQL 8 |
-| Auth | JWT |
-
-## 📂 Project Structure
+## Architecture
 
 ```
-api-laravel/
-├── app/
-├── config/
-├── database/
-├── routes/
-├── resources/
-├── composer.json
-└── README.md
+(TBD)
 ```
 
-## 🤝 Contributing
+## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit conventions, and PR workflow.
 
-## 📄 License
+## License
 
-GPL v3 — see [LICENSE](LICENSE).
+This project is licensed under the GPL v3 — see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 **Authors:**
 
-- [@chrisssp](https://github.com/chrisssp) — Developer
+- Serrano Puertos Jorge Christian
+- Chávez Moreno José Eduardo
+- Fernández López Kevin Noé
+- Florentino Altamirano Misrael
+- Ortiz Pérez Alejandro
+- Moises Torres Bernabé
 
----
+**Advisors:**
 
-<p align="center">
-  <sub>Built with ❤️ by the flacks-cc team · 2026</sub>
-</p>
+- (TBD)
+
+**Academic Support:**
+
+- (TBD)
