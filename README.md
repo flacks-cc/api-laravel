@@ -12,8 +12,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/flacks-cc/api-laravel">Repository</a>
-  ·
   <a href="https://github.com/flacks-cc/api-laravel/issues">Report Bug</a>
 </p>
 
@@ -74,11 +72,3 @@ This project is licensed under the GPL v3 — see the [LICENSE](LICENSE) file fo
 - Florentino Altamirano Misrael
 - Ortiz Pérez Alejandro
 - Moises Torres Bernabé
-
-**Advisors:**
-
-- (TBD)
-
-**Academic Support:**
-
-- (TBD)
