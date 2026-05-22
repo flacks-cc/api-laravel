@@ -48,12 +48,6 @@ composer install
 php artisan serve
 ```
 
-## Architecture
-
-```
-(TBD)
-```
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit conventions, and PR workflow.
