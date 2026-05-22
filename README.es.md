@@ -1,15 +1,15 @@
-<h1 align="center">⚙️ Flack's Cut & Connect — Laravel REST API</h1>
+<h1 align="center">⚙️ Flack's Cut & Connect — API REST Laravel</h1>
 
 <p align="center">
-  <em>Laravel-based REST API for supplementary business operations and reporting</em>
+  <em>API REST basada en Laravel para operaciones comerciales complementarias y reportes</em>
 </p>
 
 <p align="center">
   <a href="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white"><img src="https://img.shields.io/badge/Laravel-10-FF2D20?logo=laravel&logoColor=white" alt="Laravel"></a>
   <a href="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white"><img src="https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white" alt="PHP"></a>
   <a href="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white" alt="MySQL"></a>
-  <a href="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white"><img src="https://img.shields.io/badge/License-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3"></a>
-  <a href="https://img.shields.io/badge/Status-Active-2ea44f"><img src="https://img.shields.io/badge/Status-Active-2ea44f" alt="Active"></a>
+  <a href="https://img.shields.io/badge/Licencia-GPL_v3-0298c3?logo=gnu&logoColor=white"><img src="https://img.shields.io/badge/Licencia-GPL_v3-0298c3?logo=gnu&logoColor=white" alt="GPL v3"></a>
+  <a href="https://img.shields.io/badge/Estado-Activo-2ea44f"><img src="https://img.shields.io/badge/Estado-Activo-2ea44f" alt="Activo"></a>
 </p>
 
 <p align="center">
@@ -18,15 +18,15 @@
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Inicio rápido
 
-### Prerequisites
+### Requisitos previos
 
 - PHP 8.2+
 - Composer
 - MySQL 8+
 
-### Installation
+### Instalación
 
 ```bash
 git clone https://github.com/flacks-cc/api-laravel.git
@@ -35,16 +35,16 @@ composer install
 php artisan serve
 ```
 
-## 🧩 Tech Stack
+## 🧩 Tecnologías
 
-| Layer | Technology |
-|-------|-----------|
+| Capa | Tecnología |
+|------|-----------|
 | Framework | Laravel 10 |
-| Language | PHP 8.2 |
-| Database | MySQL 8 |
-| Auth | JWT |
+| Lenguaje | PHP 8.2 |
+| Base de datos | MySQL 8 |
+| Autenticación | JWT |
 
-## 📂 Project Structure
+## 📂 Estructura del proyecto
 
 ```
 api-laravel/
@@ -57,22 +57,22 @@ api-laravel/
 └── README.md
 ```
 
-## 🤝 Contributing
+## 🤝 Contribuciones
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Lee [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles.
 
-## 📄 License
+## 📄 Licencia
 
-GPL v3 — see [LICENSE](LICENSE).
+GPL v3 — ver [LICENSE](LICENSE).
 
-## 🙏 Acknowledgments
+## 🙏 Agradecimientos
 
 **Authors:**
 
-- [@chrisssp](https://github.com/chrisssp) — Developer
+- [@chrisssp](https://github.com/chrisssp) — Desarrollador
 
 ---
 
 <p align="center">
-  <sub>Built with ❤️ by the flacks-cc team · 2026</sub>
+  <sub>Hecho con ❤️ por el equipo flacks-cc · 2026</sub>
 </p>
