@@ -1,9 +1,15 @@
 {
-    "name": "laravel/laravel",
+    "name": "flacks-cc/api-laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "description": "Laravel-based REST API for supplementary business operations and reporting (Laravel 10, PHP 8.2, MySQL)",
+    "keywords": ["api", "laravel", "barbershop", "booking"],
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "flacks-cc",
+            "email": "chrisssp.dev@gmail.com"
+        }
+    ],
     "require": {
         "php": "^7.3|^8.0",
         "darkaonline/l5-swagger": "^8.5",
